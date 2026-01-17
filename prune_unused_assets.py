@@ -38,11 +38,13 @@ SKY_SIDES = ("bk", "dn", "ft", "lf", "rt", "up")
 ##
 ## something missing ingame? add the folder of whatever was removed here
 ##
-MATERIALS_TO_NOT_CHECK = ("models/weapons"
-                        "vgui", "particle", "decals", "hud",
-                        "sprites", "effects", "envmap", "console", "overlays")
+## MATERIALS_TO_NOT_CHECK = ("models/weapons"
+##                         "vgui", "particle", "decals", "hud",
+##                         "sprites", "effects", "envmap", "console", "overlays")
+MATERIALS_TO_NOT_CHECK = ()
 
-MODELS_TO_NOT_CHECK = ("gibs", "~/", "humans", "weapons", "cremator")
+## MODELS_TO_NOT_CHECK = ("gibs", "~/", "humans", "weapons", "cremator")
+MODELS_TO_NOT_CHECK = ()
 
 ##
 ## does your mod use more or fewer extra texture types for your vmts (e.g. roughness)? add/remove where applicable
