@@ -249,8 +249,12 @@ def traverse_and_evaluate() -> None:
     f = open("unused_assets.txt", "w")
     for ua in unused_assets:
         if os.path.isfile(ua):
-            f.write("".join([ua, "\n"]))
-            os.remove(ua)
+            try:
+                f.write("".join([ua, "\n"]))
+                os.remove(ua)
+            except Exception as e:
+                print("Failed to remove asset: ", ua)
+                print("Caught exception", e)
     f.close()
 
 def print_to_file(filename, lst):
