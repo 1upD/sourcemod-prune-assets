@@ -57,7 +57,7 @@ VMT_PARAMS = ("$basetexture", "$bumpmap", "$detail", "$phongwarptexture", "$self
 ##
 ## change this according to your mod's file structure
 ##
-MAP_FOLDER = "maps"
+MAP_FOLDER = "mapsrc"
 MATERIAL_FOLDER = "materials"
 MODEL_FOLDER = "models"
 SCENE_FOLDER = "scenes"
