@@ -156,8 +156,9 @@ def traverse_and_evaluate() -> None:
 
     for p, _, files in path_mat:
         for file in files:
-            if file.endswith(".vmt") and not (any(x in p.lower() for x in MATERIALS_TO_NOT_CHECK) or (p == MATERIAL_FOLDER and not mat_allow_root)):
-                materials_to_search.append(os.path.join(p.lower(), file.lower()).replace("\\", "/"))
+            # Removed "file.endswith(".vmt")" check from conditional so that loose textures are included 
+            if  not (any(x in p.lower() for x in MATERIALS_TO_NOT_CHECK) or (p == MATERIAL_FOLDER and not mat_allow_root)):
+                materials_to_search.append(os.path.join(p.lower(), file.lower()).replace("\\", "/")) 
             elif any(x in p.lower() for x in MATERIALS_TO_NOT_CHECK):
                 # *normally* we wouldn't add this, but there's a really obscure bug that happens here:
                 # given some folder which we don't check (e.g. decals/), anything in it is also not checked, and thus not marked as used/unused
@@ -269,9 +270,12 @@ def print_to_file(filename, lst):
 def get_textures_from_vmts(file: str, lst: list[str]) -> list[str]:
     """
     Gets textures from a VMT and returns the resultant list of textures from that one VMT.
-    Input: VMT file, list to place our textures into.
+    Input: VMT file, list to place our textures into. File must end with .vmt extension
     Output: List of textures.
     """
+    if not file.endswith(".vmt"):
+        return lst
+
     vmt = open(file)
     for line in vmt:
         li = line.strip().replace("\t", " ").split(" ")
